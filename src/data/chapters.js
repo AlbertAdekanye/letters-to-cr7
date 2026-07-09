@@ -16,6 +16,7 @@ const chapters = [
     subtitle:
       "On a small island surrounded by the Atlantic, a boy dared to dream beyond the horizon.",
     image: madeira,
+    align: "left",
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const chapters = [
     subtitle:
       "The dream found its first home, and the world slowly began to take notice.",
     image: sporting,
+    align: "right",
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const chapters = [
     subtitle:
       "A teenager arrived with dazzling feet and left as one of football's brightest stars.",
     image: manchesterUnited,
+    align: "left",
   },
   {
     id: 4,
@@ -43,6 +46,7 @@ const chapters = [
     subtitle:
       "Records were broken. History was rewritten. A legend was born.",
     image: realMadrid,
+    align: "right",
   },
   {
     id: 5,
@@ -52,6 +56,7 @@ const chapters = [
     subtitle:
       "Another league. Another country. The pursuit of excellence never stopped.",
     image: juventus,
+    align: "left",
   },
   {
     id: 6,
@@ -61,6 +66,7 @@ const chapters = [
     subtitle:
       "Old Trafford welcomed its hero once more, proving that some bonds never fade.",
     image: manchesterUnitedReturn,
+    align: "right",
   },
   {
     id: 7,
@@ -70,6 +76,7 @@ const chapters = [
     subtitle:
       "A new continent embraced a legend whose influence had already reached every corner of the world.",
     image: alNassr,
+    align: "left",
   },
   {
     id: 8,
@@ -79,6 +86,7 @@ const chapters = [
     subtitle:
       "The final whistle doesn't end a legacy. It lives on in every dream it inspired.",
     image: portugal,
+    align: "right",
   },
 ];
 export default chapters;

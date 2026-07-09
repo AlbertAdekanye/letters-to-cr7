@@ -77,7 +77,7 @@ const Hero = () => {
             delay: 1.4,
             duration: 1,
           }}
-          className="mt-14 rounded-full border border-yellow-500 px-10 py-4 text-white transition-all duration-500 hover:bg-yellow-500 hover:text-black"
+          className="mt-14 rounded-lg border border-yellow-500 px-10 py-4 text-white transition-all duration-500 hover:bg-yellow-500 hover:text-black"
         >
           Begin the Journey →
         </motion.button>

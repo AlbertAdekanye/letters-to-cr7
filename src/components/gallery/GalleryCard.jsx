@@ -1,0 +1,98 @@
+import { motion } from "framer-motion";
+
+const GalleryCard = ({
+  year,
+  title,
+  description,
+  image,
+  reverse,
+}) => {
+  return (
+    <section className="relative overflow-hidden">
+      {/* Giant Background Year */}
+      <h1 className="pointer-events-none absolute left-0 top-0 select-none text-[90px] font-black text-white/5 sm:text-[140px] md:text-[180px] lg:text-[250px]">
+        {year}
+      </h1>
+
+      <div
+        className={`relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
+          reverse ? "" : ""
+        }`}
+      >
+        {/* TEXT */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: reverse ? 80 : -80,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 1,
+          }}
+          className={`order-2 ${
+            reverse ? "lg:order-2" : "lg:order-1"
+          }`}
+        >
+          <p className="mb-3 uppercase tracking-[6px] text-yellow-500">
+            {year}
+          </p>
+
+          <h2 className="mb-6 text-4xl font-black text-white md:text-6xl">
+            {title}
+          </h2>
+
+          <div className="mb-8 h-[2px] w-24 bg-yellow-500"></div>
+
+          <p className="max-w-xl text-lg leading-9 text-gray-400">
+            {description}
+          </p>
+        </motion.div>
+
+        {/* IMAGE */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: reverse ? -80 : 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 1,
+          }}
+          className={`order-1 ${
+            reverse ? "lg:order-1" : "lg:order-2"
+          }`}
+        >
+          <motion.div
+            whileHover={{
+              scale: 1.03,
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="group relative overflow-hidden rounded-3xl"
+          >
+            <img
+              src={image}
+              alt={title}
+              className="h-[300px] w-full object-cover transition duration-700 group-hover:scale-110 sm:h-[420px] lg:h-[600px]"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+            <div className="absolute inset-0 rounded-3xl border border-white/10"></div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default GalleryCard;
