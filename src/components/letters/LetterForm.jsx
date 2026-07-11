@@ -11,6 +11,7 @@ const LetterForm = ({ onAddLetter }) => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -38,6 +39,12 @@ const LetterForm = ({ onAddLetter }) => {
 
     onAddLetter(newLetter);
 
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
+
     setFormData({
       nickname: "",
       country: "",
@@ -47,7 +54,35 @@ const LetterForm = ({ onAddLetter }) => {
     setIsSubmitting(false);
   };
 
+  const remainingCharacters =
+    MAX_CHARACTERS - formData.message.length;
+
   return (
+    <>
+    {showSuccess && (
+  <motion.div
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.3 }}
+    className="fixed top-6 right-6 z-50 rounded-2xl border border-yellow-500/20 bg-zinc-900 px-6 py-4 shadow-2xl"
+  >
+    <div className="flex items-center gap-3">
+      <span className="text-2xl">⭐</span>
+
+      <div>
+        <h4 className="font-bold text-white">
+          Letter Sent!
+        </h4>
+
+        <p className="text-sm text-gray-400">
+          Your message is now part of the tribute.
+        </p>
+      </div>
+    </div>
+  </motion.div>
+)}
+
     <motion.form
       onSubmit={handleSubmit}
       initial={{ opacity: 0, y: 50 }}
@@ -72,22 +107,29 @@ const LetterForm = ({ onAddLetter }) => {
         className="w-full resize-none rounded-2xl border border-white/10 bg-black p-6 text-lg leading-8 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
       />
 
-      <div className="mt-2 flex justify-end">
+      {/* Character Counter */}
+
+      <div className="mt-3 flex items-center justify-between text-sm">
+        <p className="text-gray-500">
+          Maximum {MAX_CHARACTERS} characters
+        </p>
+
         <span
-          className={`text-sm ${
-            formData.message.length >= MAX_CHARACTERS
+          className={`font-medium transition-colors ${
+            remainingCharacters <= 0
               ? "text-red-500"
+              : remainingCharacters <= 50
+              ? "text-yellow-500"
               : "text-gray-500"
           }`}
         >
-          {formData.message.length}/{MAX_CHARACTERS}
+          {remainingCharacters} characters remaining
         </span>
       </div>
 
       {/* Inputs */}
 
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-
         <input
           type="text"
           name="nickname"
@@ -97,15 +139,30 @@ const LetterForm = ({ onAddLetter }) => {
           className="rounded-xl border border-white/10 bg-black px-5 py-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
         />
 
-        <input
-          type="text"
+        <select
           name="country"
           value={formData.country}
           onChange={handleChange}
-          placeholder="Country (optional)"
-          className="rounded-xl border border-white/10 bg-black px-5 py-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
-        />
+          className="rounded-xl border border-white/10 bg-black px-5 py-4 text-white focus:border-yellow-500 focus:outline-none"
+        >
+          <option value="">🌍 Select Your Country (Optional)</option>
 
+          <option value="🇳🇬 Nigeria">🇳🇬 Nigeria</option>
+          <option value="🇵🇹 Portugal">🇵🇹 Portugal</option>
+          <option value="🇧🇷 Brazil">🇧🇷 Brazil</option>
+          <option value="🇦🇷 Argentina">🇦🇷 Argentina</option>
+          <option value="🇪🇸 Spain">🇪🇸 Spain</option>
+          <option value="🇫🇷 France">🇫🇷 France</option>
+          <option value="🇮🇹 Italy">🇮🇹 Italy</option>
+          <option value="🇩🇪 Germany">🇩🇪 Germany</option>
+          <option value="🇬🇧 United Kingdom">🇬🇧 United Kingdom</option>
+          <option value="🇺🇸 United States">🇺🇸 United States</option>
+          <option value="🇯🇵 Japan">🇯🇵 Japan</option>
+          <option value="🇰🇷 South Korea">🇰🇷 South Korea</option>
+          <option value="🇮🇳 India">🇮🇳 India</option>
+          <option value="🇨🇦 Canada">🇨🇦 Canada</option>
+          <option value="🇦🇺 Australia">🇦🇺 Australia</option>
+        </select>
       </div>
 
       {/* Button */}
@@ -118,6 +175,7 @@ const LetterForm = ({ onAddLetter }) => {
         {isSubmitting ? "Sending..." : "Send My Letter"}
       </button>
     </motion.form>
+    </>
   );
 };
 
