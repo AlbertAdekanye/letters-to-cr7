@@ -18,9 +18,9 @@ const CommunityHeader = () => {
       </h2>
 
       <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-400">
-        Cristiano Ronaldo's journey has connected fans from every corner of the
-        world. Different countries, different languages, but one shared
-        admiration for greatness.
+        Every letter tells a story.
+        Every fan has a reason.
+        Here are some of the latest messages shared by supporters from around the world.
       </p>
     </motion.div>
   );

@@ -1,39 +1,14 @@
-import { useState } from "react";
 import LetterCounter from "./LetterCounter";
 import LetterForm from "./LetterForm";
 import LetterWall from "./LetterWall";
 
-const Letters = () => {
-  const [letters, setLetters] = useState([
-    {
-      id: crypto.randomUUID(),
-      nickname: "Albert",
-      country: "🇳🇬 Nigeria",
-      message:
-        "Thank you for showing us that discipline, hard work and consistency can make dreams become reality.",
-      createdAt: new Date(),
-    },
-    {
-      id: crypto.randomUUID(),
-      nickname: "Anonymous Fan",
-      country: "🇵🇹 Portugal",
-      message:
-        "Obrigado por tudo. You inspired generations and changed football forever.",
-      createdAt: new Date(),
-    },
-  ]);
-
-  const addLetter = (newLetter) => {
-    setLetters((prevLetters) => [newLetter, ...prevLetters]);
-  };
-
+const Letters = ({ letters, onAddLetter }) => {
   return (
     <section className="bg-black py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
 
-        {/* Header */}
+        {/* Header */}\
         <div className="mb-20 text-center">
-
           <p className="mb-4 uppercase tracking-[8px] text-yellow-500">
             Letters
           </p>
@@ -49,19 +24,20 @@ const Letters = () => {
             If you could send Cristiano Ronaldo one message,
             what would you say?
           </p>
-
         </div>
 
+        {/* Counter */}
         <LetterCounter count={letters.length} />
 
+        {/* Form */}
         <div className="mt-16">
-          <LetterForm onAddLetter={addLetter} />
+          <LetterForm onAddLetter={onAddLetter} />
         </div>
 
+        {/* Letters */}
         <div className="mt-24">
           <LetterWall letters={letters} />
         </div>
-
       </div>
     </section>
   );
