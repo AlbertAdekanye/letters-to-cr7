@@ -1,42 +1,29 @@
 import LetterCard from "./LetterCard";
 
-const letters = [
-  {
-    id: 1,
-    country: "🇳🇬 Nigeria",
-    message:
-      "Thank you for teaching me that discipline beats talent when talent refuses to work.",
-  },
-  {
-    id: 2,
-    country: "🇵🇹 Portugal",
-    message:
-      "You made an entire nation believe that impossible dreams can come true.",
-  },
-  {
-    id: 3,
-    country: "🇧🇷 Brazil",
-    message:
-      "Football will remember your goals, but we will remember your mentality.",
-  },
-];
-
-const LetterWall = () => {
+const LetterWall = ({ letters }) => {
   return (
-    <>
-      <h3 className="mb-12 text-center text-4xl font-bold text-white">
-        Voices From Around the World
-      </h3>
+    <section>
+      <div className="mb-12 text-center">
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <p className="uppercase tracking-[8px] text-yellow-500">
+          Community
+        </p>
+
+        <h2 className="mt-4 text-4xl font-black text-white">
+          Voices From Around The World
+        </h2>
+
+      </div>
+
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
         {letters.map((letter) => (
           <LetterCard
             key={letter.id}
-            {...letter}
+            letter={letter}
           />
         ))}
       </div>
-    </>
+    </section>
   );
 };
 
