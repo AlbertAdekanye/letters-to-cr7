@@ -1,6 +1,25 @@
+import { useState, useEffect } from "react";
 import LetterCard from "./LetterCard";
 
-const LetterWall = ({ letters }) => {
+const LETTERS_PER_PAGE = 9;
+
+const LetterWall = ({
+  letters,
+  onLikeLetter,
+}) => {
+  const [visibleLetters, setVisibleLetters] =
+    useState(LETTERS_PER_PAGE);
+
+  // Reset when new letters arrive
+  useEffect(() => {
+    setVisibleLetters(LETTERS_PER_PAGE);
+  }, [letters]);
+
+  const displayedLetters = letters.slice(
+    0,
+    visibleLetters
+  );
+
   return (
     <section className="mt-24">
       {/* Header */}
@@ -34,14 +53,32 @@ const LetterWall = ({ letters }) => {
           </p>
         </div>
       ) : (
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {letters.map((letter) => (
-            <LetterCard
-              key={letter.id}
-              letter={letter}
-            />
-          ))}
-        </div>
+        <>
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {displayedLetters.map((letter) => (
+              <LetterCard
+                key={letter._id}
+                letter={letter}
+                onLike={onLikeLetter}
+              />
+            ))}
+          </div>
+
+          {visibleLetters < letters.length && (
+            <div className="mt-16 flex justify-center">
+              <button
+                onClick={() =>
+                  setVisibleLetters(
+                    (prev) => prev + LETTERS_PER_PAGE
+                  )
+                }
+                className="rounded-full bg-yellow-500 px-8 py-4 font-bold text-black transition-all duration-300 hover:scale-105 hover:bg-yellow-400"
+              >
+                Load More Letters
+              </button>
+            </div>
+          )}
+        </>
       )}
     </section>
   );

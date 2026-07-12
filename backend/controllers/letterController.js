@@ -1,4 +1,4 @@
-const Letter = require("../models/Letter");
+const Letter = require("../models/letterModel");
 
 exports.getAllLetters = async (req, res) => {
   try {
@@ -33,6 +33,38 @@ exports.createLetter = async (req, res) => {
     res.status(400).json({
       status: "fail",
       message: error.message,
+    });
+  }
+};
+
+exports.likeLetter = async (req, res) => {
+  try {
+    const letter = await Letter.findByIdAndUpdate(
+      req.params.id,
+      {
+        $inc: { likes: 1 },
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!letter) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Letter not found.",
+      });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: letter,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      message: err.message,
     });
   }
 };

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import formatDate from "../../utils/formatDate";
 
-const LetterCard = ({ letter }) => {
+const LetterCard = ({ letter, onLike }) => {
   return (
     <motion.article
       layout
@@ -24,11 +25,25 @@ const LetterCard = ({ letter }) => {
           </p>
 
           <p className="mt-2 text-xs uppercase tracking-[3px] text-gray-500">
-            Just now
+            {formatDate(letter.createdAt)}
           </p>
         </div>
 
-        <span className="text-2xl text-yellow-500">✉️</span>
+        <div className="flex flex-col items-center">
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => onLike(letter._id)}
+            className="text-2xl transition-colors hover:text-red-500"
+            aria-label="Like letter"
+          >
+            ❤️
+          </motion.button>
+
+          <span className="mt-2 text-sm font-semibold text-gray-400">
+            {letter.likes ?? 0}
+          </span>
+        </div>
       </div>
 
       {/* Letter */}

@@ -4,22 +4,25 @@ const letterSchema = new mongoose.Schema(
   {
     nickname: {
       type: String,
-      trim: true,
       default: "Anonymous Fan",
-      maxlength: [50, "Nickname cannot exceed 50 characters"],
+      trim: true,
     },
 
     country: {
       type: String,
-      trim: true,
       default: "🌍 Somewhere on Earth",
     },
 
     message: {
       type: String,
-      required: [true, "Please write a message."],
+      required: [true, "A message is required."],
       trim: true,
-      maxlength: [500, "Message cannot exceed 500 characters"],
+      maxlength: 500,
+    },
+
+    likes: {
+      type: Number,
+      default: 0,
     },
   },
   {
@@ -27,6 +30,4 @@ const letterSchema = new mongoose.Schema(
   }
 );
 
-const Letter = mongoose.model("Letter", letterSchema);
-
-module.exports = Letter;
+module.exports = mongoose.model("Letter", letterSchema);

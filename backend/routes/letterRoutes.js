@@ -8,4 +8,8 @@ router
   .get(letterController.getAllLetters)
   .post(letterController.createLetter);
 
+router.patch(
+  "/:id/like",
+  letterController.likeLetter
+);
 module.exports = router;
