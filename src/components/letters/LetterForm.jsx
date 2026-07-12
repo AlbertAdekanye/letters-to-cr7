@@ -74,7 +74,6 @@ const LetterForm = ({ onAddLetter }) => {
         <h4 className="font-bold text-white">
           Letter Sent!
         </h4>
-
         <p className="text-sm text-gray-400">
           Your message is now part of the tribute.
         </p>
