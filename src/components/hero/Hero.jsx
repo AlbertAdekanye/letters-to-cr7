@@ -92,7 +92,7 @@ const Hero = () => {
           className="absolute bottom-10 flex flex-col items-center text-sm text-gray-400"
         >
           <span>Scroll</span>
-          <span className="mt-2 text-xl">↓</span>
+          <span className="mt-2 text-2xl">↓</span>
         </motion.div>
       </div>
     </section>
