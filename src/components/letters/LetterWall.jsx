@@ -17,7 +17,7 @@ const LetterWall = ({
 
   const displayedLetters = letters.slice(
     0,
-    visibleLetters
+    visibleLetter
   );
 
   return (
