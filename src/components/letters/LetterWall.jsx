@@ -12,7 +12,7 @@ const LetterWall = ({
 
   // Reset when new letters arrive
   useEffect(() => {
-    setVisibleLetters(LETTERS_PER_PAGE);
+    // setVisibleLetters(LETTERS_PER_PAGE);
   }, [letters]);
 
   const displayedLetters = letters.slice(
