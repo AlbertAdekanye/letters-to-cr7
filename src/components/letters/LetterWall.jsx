@@ -7,7 +7,7 @@ const LetterWall = ({
   letters,
   onLikeLetter,
 }) => {
-  // const [visibleLetters, setVisibleLetters] =
+  const [visibleLetters, setVisibleLetters] =
     useState(LETTERS_PER_PAGE);
 
   // Reset when new letters arrive
