@@ -1,7 +1,32 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+
 import formatDate from "../../utils/formatDate";
+import {
+  hasLikedLetter,
+  saveLikedLetter,
+} from "../../utils/localStorage";
 
 const LetterCard = ({ letter, onLike }) => {
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    setLiked(hasLikedLetter(letter._id));
+  }, [letter._id]);
+
+  const handleLike = async () => {
+    if (liked) return;
+
+    try {
+      await onLike(letter._id);
+
+      saveLikedLetter(letter._id);
+      setLiked(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <motion.article
       layout
@@ -31,13 +56,26 @@ const LetterCard = ({ letter, onLike }) => {
 
         <div className="flex flex-col items-center">
           <motion.button
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => onLike(letter._id)}
-            className="text-2xl transition-colors hover:text-red-500"
+            whileHover={!liked ? { scale: 1.2 } : {}}
+            whileTap={!liked ? { scale: 0.9 } : {}}
+            animate={
+              liked
+                ? {
+                    scale: [1, 1.35, 1],
+                  }
+                : {}
+            }
+            transition={{ duration: 0.3 }}
+            onClick={handleLike}
+            disabled={liked}
+            className={`text-2xl transition-all duration-300 ${
+              liked
+                ? "cursor-default text-red-500"
+                : "hover:text-red-500"
+            }`}
             aria-label="Like letter"
           >
-            ❤️
+            {liked ? "❤️" : "🤍"}
           </motion.button>
 
           <span className="mt-2 text-sm font-semibold text-gray-400">
