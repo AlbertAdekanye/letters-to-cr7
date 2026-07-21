@@ -2,35 +2,37 @@
 
 @import "tailwindcss";
 
-:root{
-  --background:#050505;
-  --secondary:#111111;
-  --gold:#D4AF37;
-  --white:#F8F8F8;
-  --gray:#9CA3AF;
+:root {
+  --background: #050505;
+  --secondary: #111111;
+  --gold: #D4AF37;
+  --white: #F8F8F8;
+  --gray: #9CA3AF;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
-html{
-  scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
-  background:var(--background);
-  color:var(--white);
-  font-family:"Inter",sans-serif;
-  overflow-x:hidden;
+body {
+  background: var(--background);
+  color: var(--white);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
-h1,h2,h3,h4{
-  font-family:"Cinzel",serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Cinzel", serif;
 }
 
-button{
-  cursor:pointer;
+button {
+  cursor: pointer;
 }
