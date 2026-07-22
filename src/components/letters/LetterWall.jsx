@@ -13,21 +13,17 @@ const LetterWall = ({
     useState(LETTERS_PER_PAGE);
 
   const [search, setSearch] = useState("");
-
   const [country, setCountry] = useState("All");
 
-  // Reset when new letters arrive
   useEffect(() => {
     setVisibleLetters(LETTERS_PER_PAGE);
   }, [letters]);
 
-  // Build country list automatically
   const countries = [
     "All",
     ...new Set(letters.map((letter) => letter.country)),
   ];
 
-  // Filter letters
   const filteredLetters = letters.filter((letter) => {
     const matchesSearch =
       letter.nickname
@@ -49,7 +45,6 @@ const LetterWall = ({
     visibleLetters
   );
 
-  // Statistics
   const totalLikes = letters.reduce(
     (total, letter) => total + (letter.likes || 0),
     0
@@ -62,37 +57,47 @@ const LetterWall = ({
   const showing = displayedLetters.length;
 
   return (
-    <section className="mt-24">
+    <section
+      id="letter-wall"
+      className="w-full"
+    >
       {/* Header */}
-      <div className="mb-12 text-center">
-        <p className="uppercase tracking-[8px] text-yellow-500">
+      <div className="mb-16 text-center">
+        <p className="text-sm font-semibold uppercase tracking-[10px] text-yellow-500">
           Letter Wall
         </p>
 
-        <h2 className="mt-4 text-4xl font-black text-white">
-          Messages From Fans Around the World
+        <h2 className="mt-5 text-5xl font-black text-white md:text-6xl">
+          Messages From
+          <br />
+          Around The World
         </h2>
 
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-400">
+        <div className="mx-auto my-8 h-[2px] w-24 bg-yellow-500" />
+
+        <p className="mx-auto max-w-3xl text-lg leading-9 text-gray-400">
           Every message shared here is a tribute from fans whose
           lives have been inspired by Cristiano Ronaldo.
         </p>
       </div>
 
-      {/* Live Statistics */}
-      <LetterStats
-        totalLetters={letters.length}
-        totalLikes={totalLikes}
-        totalCountries={totalCountries}
-        showing={showing}
-      />
+      {/* Statistics */}
+      <div className="mb-20">
+        <LetterStats
+          totalLetters={letters.length}
+          totalLikes={totalLikes}
+          totalCountries={totalCountries}
+          showing={showing}
+        />
+      </div>
 
-      {/* Featured Letters */}
-      <FeaturedLetters letters={letters} />
+      {/* Featured */}
+      <div className="mb-20">
+        <FeaturedLetters letters={letters} />
+      </div>
 
-      {/* Search & Filter */}
-      <div className="mb-16 grid gap-6 md:grid-cols-2">
-        {/* Search */}
+      {/* Search */}
+      <div className="mb-20 grid gap-6 md:grid-cols-2">
         <input
           type="text"
           value={search}
@@ -101,7 +106,6 @@ const LetterWall = ({
           className="w-full rounded-2xl border border-white/10 bg-zinc-900 px-6 py-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
         />
 
-        {/* Country Filter */}
         <select
           value={country}
           onChange={(e) => setCountry(e.target.value)}
@@ -143,8 +147,7 @@ const LetterWall = ({
 
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-gray-400">
             We couldn't find any letters matching your search
-            or selected country. Try different keywords or
-            clear the filters.
+            or selected country.
           </p>
         </div>
       ) : (
@@ -160,7 +163,7 @@ const LetterWall = ({
           </div>
 
           {visibleLetters < filteredLetters.length && (
-            <div className="mt-16 flex justify-center">
+            <div className="mt-20 flex justify-center">
               <button
                 onClick={() =>
                   setVisibleLetters(
