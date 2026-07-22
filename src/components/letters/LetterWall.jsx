@@ -5,10 +5,7 @@ import FeaturedLetters from "./FeaturedLetters";
 
 const LETTERS_PER_PAGE = 9;
 
-const LetterWall = ({
-  letters,
-  onLikeLetter,
-}) => {
+const LetterWall = ({ letters, onLikeLetter }) => {
   const [visibleLetters, setVisibleLetters] =
     useState(LETTERS_PER_PAGE);
 
@@ -57,12 +54,9 @@ const LetterWall = ({
   const showing = displayedLetters.length;
 
   return (
-    <section
-      id="letter-wall"
-      className="w-full"
-    >
+    <section id="letter-wall" className="w-full">
       {/* Header */}
-      <div className="mb-16 text-center">
+      <div className="mb-16 flex flex-col items-center text-center">
         <p className="text-sm font-semibold uppercase tracking-[10px] text-yellow-500">
           Letter Wall
         </p>
@@ -73,12 +67,14 @@ const LetterWall = ({
           Around The World
         </h2>
 
-        <div className="mx-auto my-8 h-[2px] w-24 bg-yellow-500" />
+        <div className="my-8 h-[2px] w-24 bg-yellow-500" />
 
-        <p className="mx-auto max-w-3xl text-lg leading-9 text-gray-400">
-          Every message shared here is a tribute from fans whose
-          lives have been inspired by Cristiano Ronaldo.
-        </p>
+        <div className="max-w-3xl">
+          <p className="text-center text-lg leading-9 text-gray-400">
+            Every message shared here is a tribute from fans whose
+            lives have been inspired by Cristiano Ronaldo.
+          </p>
+        </div>
       </div>
 
       {/* Statistics */}
