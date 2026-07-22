@@ -3,21 +3,21 @@ import moments from "../../data/galleryData";
 
 const Gallery = () => {
   return (
-    <section className="relative overflow-hidden bg-black py-24">
+    <section className="relative overflow-hidden bg-black py-28">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
 
       {/* Golden Glow */}
       <div className="absolute left-1/2 top-1/2 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-500/10 blur-[140px]" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6">
+      <div className="relative z-10 flex flex-col items-center px-6">
         {/* Heading */}
-        <div className="mx-auto mb-24 max-w-4xl text-center">
+        <div className="mb-24 w-full max-w-4xl text-center">
           <p className="mb-5 text-sm font-semibold uppercase tracking-[10px] text-yellow-500">
             Moments
           </p>
 
-          <h2 className="text-5xl font-black text-white md:text-7xl">
+          <h2 className="text-5xl font-black leading-tight text-white md:text-7xl">
             Moments That
             <br />
             Defined Greatness
@@ -33,7 +33,7 @@ const Gallery = () => {
         </div>
 
         {/* Gallery */}
-        <div className="space-y-28">
+        <div className="w-full max-w-5xl space-y-28">
           {moments.map((moment) => (
             <GalleryCard
               key={moment.id}

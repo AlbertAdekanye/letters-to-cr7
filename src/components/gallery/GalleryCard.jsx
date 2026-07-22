@@ -8,14 +8,16 @@ const GalleryCard = ({
   reverse,
 }) => {
   return (
-    <section className="relative overflow-hidden">
-      {/* Giant Background Year */}
-      <h1 className="pointer-events-none absolute left-0 top-0 select-none text-[90px] font-black text-white/5 sm:text-[140px] md:text-[180px] lg:text-[250px]">
-        {year}
-      </h1>
+    <section className="relative">
+      {/* Background Year */}
+      <div className="mb-8 text-center">
+        <h1 className="select-none text-[90px] font-black leading-none text-white/5 sm:text-[140px] md:text-[180px] lg:text-[220px]">
+          {year}
+        </h1>
+      </div>
 
       <div
-        className={`relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
+        className={`grid items-center gap-16 lg:grid-cols-2 ${
           reverse ? "" : ""
         }`}
       >
@@ -30,9 +32,7 @@ const GalleryCard = ({
             x: 0,
           }}
           viewport={{ once: true }}
-          transition={{
-            duration: 1,
-          }}
+          transition={{ duration: 1 }}
           className={`order-2 ${
             reverse ? "lg:order-2" : "lg:order-1"
           }`}
@@ -45,7 +45,7 @@ const GalleryCard = ({
             {title}
           </h2>
 
-          <div className="mb-8 h-[2px] w-24 bg-yellow-500"></div>
+          <div className="mb-8 h-[2px] w-24 bg-yellow-500" />
 
           <p className="max-w-xl text-lg leading-9 text-gray-400">
             {description}
@@ -63,31 +63,25 @@ const GalleryCard = ({
             x: 0,
           }}
           viewport={{ once: true }}
-          transition={{
-            duration: 1,
-          }}
-          className={`order-1 ${
+          transition={{ duration: 1 }}
+          className={`order-1 flex justify-center ${
             reverse ? "lg:order-1" : "lg:order-2"
           }`}
         >
           <motion.div
-            whileHover={{
-              scale: 1.03,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            className="group relative overflow-hidden rounded-3xl"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.5 }}
+            className="group relative w-full max-w-[620px] overflow-hidden rounded-3xl"
           >
             <img
               src={image}
               alt={title}
-              className="h-[300px] w-full object-cover transition duration-700 group-hover:scale-110 sm:h-[420px] lg:h-[600px]"
+              className="h-[320px] w-full object-cover transition duration-700 group-hover:scale-105 sm:h-[450px] lg:h-[620px]"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-            <div className="absolute inset-0 rounded-3xl border border-white/10"></div>
+            <div className="absolute inset-0 rounded-3xl border border-white/10" />
           </motion.div>
         </motion.div>
       </div>
