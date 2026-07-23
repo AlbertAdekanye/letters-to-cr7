@@ -13,6 +13,7 @@ import {
   createLetter,
   likeLetter,
 } from "../services/letterService";
+import FinalTribute from "../components/forever7/FinalTribute";
 
 const Home = () => {
   const [letters, setLetters] = useState([]);
@@ -86,6 +87,7 @@ const Home = () => {
         loading={loading}
         error={error}
       />
+      <FinalTribute />
 
       <Footer />
     </>

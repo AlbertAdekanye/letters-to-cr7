@@ -47,7 +47,7 @@ const Letters = ({
   }
 
   return (
-    <section className="relative overflow-hidden bg-black py-28">
+    <section className="relative overflow-hidden bg-black">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
 

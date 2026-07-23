@@ -30,7 +30,7 @@ const stats = [
   {
     id: 6,
     number: 1000,
-    suffix: "?",
+    suffix: "",
     title: "The Journey Continues",
   },
 ];

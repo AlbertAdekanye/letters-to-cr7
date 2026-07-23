@@ -30,7 +30,7 @@ const LetterStats = ({
   ];
 
   return (
-    <div className="mb-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="pb-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
       {stats.map((stat, index) => (
         <motion.div
           key={stat.label}

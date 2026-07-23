@@ -3,7 +3,7 @@ import stats from "../../data/legacyData";
 
 const Legacy = () => {
   return (
-    <section className="relative overflow-hidden bg-black py-28">
+    <section className="relative overflow-hidden bg-black py-2">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
 
