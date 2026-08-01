@@ -1,4 +1,8 @@
-const API_URL = "http://localhost:5000/api/v1/letters";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000";
+
+const API_URL = `${API_BASE_URL}/api/v1/letters`;
 
 export const getLetters = async () => {
   const response = await fetch(API_URL);
@@ -31,12 +35,9 @@ export const createLetter = async (letter) => {
 };
 
 export const likeLetter = async (id) => {
-  const response = await fetch(
-    `http://localhost:5000/api/v1/letters/${id}/like`,
-    {
-      method: "PATCH",
-    }
-  );
+  const response = await fetch(`${API_URL}/${id}/like`, {
+    method: "PATCH",
+  });
 
   if (!response.ok) {
     throw new Error("Unable to like letter.");
