@@ -1,4 +1,4 @@
-import madeira from "../assets/images/journey/maderia.jpg";
+import madeira from "../assets/images/journey/madeira.jpg";
 import sporting from "../assets/images/journey/sporting.jpg";
 import manchesterUnited from "../assets/images/journey/manchester-united.jpg";
 import realMadrid from "../assets/images/journey/realMadrid.jpg";
