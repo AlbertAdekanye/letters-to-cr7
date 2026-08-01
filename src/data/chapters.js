@@ -47,6 +47,7 @@ const chapters = [
       "Records were broken. History was rewritten. A legend was born.",
     image: realMadrid,
     align: "right",
+    
   },
   {
     id: 5,
