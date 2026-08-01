@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+node_modules/
+config.env
+.env
+.env.local
+.env.production
+npm-debug.log*
