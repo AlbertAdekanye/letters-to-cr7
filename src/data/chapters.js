@@ -89,4 +89,5 @@ const chapters = [
     align: "right",
   },
 ];
+
 export default chapters;
