@@ -28,9 +28,9 @@ const Footer = () => {
               Forever Number Seven
             </p>
 
-            <h3 className="text-5xl font-black text-white md:text-6xl">
+            {/* <h3 className="text-5xl font-black text-white md:text-6xl text-center">
               SIUUUU ❤️
-            </h3>
+            </h3> */}
 
             <p className="text-yellow-500">
               Thank You, Cristiano.

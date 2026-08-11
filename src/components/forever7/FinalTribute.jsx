@@ -28,7 +28,7 @@ const FinalTribute = () => {
 
           <div className="mx-auto my-8 h-[2px] w-24 bg-yellow-500" />
 
-          <h2 className="text-5xl font-black leading-tight text-white md:text-7xl">
+          <h2 className="text-5xl font-black leading-tight text-white md:text-lg">
             One Dream.
             <br />
             One Legend.
@@ -120,17 +120,17 @@ const FinalTribute = () => {
           transition={{ duration: 0.9 }}
           className="mt-28 text-center"
         >
-          <p className="text-2xl font-semibold text-yellow-400">
+          <p className="text-2xl font-semibold text-yellow-400 py-2">
             From Every Country.
           </p>
 
-          <h3 className="mt-3 text-5xl font-black text-white md:text-6xl">
+          <h3 className="mt-3 text-5xl font-black text-white md:text-xl">
             For One Legend.
           </h3>
 
-          <p className="mt-10 text-sm uppercase tracking-[10px] text-gray-500">
+          {/* <p className="mt-10 text-sm uppercase tracking-[10px] text-gray-500">
             SIUUUU ❤️
-          </p>
+          </p> */}
         </motion.div>
       </div>
     </section>
