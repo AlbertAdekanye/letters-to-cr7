@@ -1,7 +1,7 @@
 const stats = [
   {
     id: 1,
-    number: 938,
+    number: 976,
     suffix: "+",
     title: "Career Goals",
   },
@@ -17,7 +17,7 @@ const stats = [
   },
   {
     id: 4,
-    number: 200,
+    number: 233,
     suffix: "+",
     title: "International Appearances",
   },
