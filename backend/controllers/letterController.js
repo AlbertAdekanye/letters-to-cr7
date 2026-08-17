@@ -21,7 +21,57 @@ exports.getAllLetters = async (req, res) => {
 
 exports.createLetter = async (req, res) => {
   try {
-    const letter = await Letter.create(req.body);
+    let { nickname, country, message } = req.body;
+
+    // Message must be a string
+    if (typeof message !== "string") {
+      return res.status(400).json({
+        status: "fail",
+        message: "Please write a message.",
+      });
+    }
+
+    // Remove unnecessary whitespace
+    message = message.trim();
+
+    // Reject empty messages
+    if (!message) {
+      return res.status(400).json({
+        status: "fail",
+        message: "Your letter cannot be empty.",
+      });
+    }
+
+    // Minimum meaningful length
+    if (message.length < 10) {
+      return res.status(400).json({
+        status: "fail",
+        message: "Your letter is too short.",
+      });
+    }
+
+    // Maximum length
+    if (message.length > 500) {
+      return res.status(400).json({
+        status: "fail",
+        message: "Your letter cannot exceed 500 characters.",
+      });
+    }
+
+    // Clean optional fields
+    if (typeof nickname === "string") {
+      nickname = nickname.trim().slice(0, 50);
+    }
+
+    if (typeof country === "string") {
+      country = country.trim().slice(0, 100);
+    }
+
+    const letter = await Letter.create({
+      nickname: nickname || "Anonymous Fan",
+      country: country || "🌍 Somewhere on Earth",
+      message,
+    });
 
     res.status(201).json({
       status: "success",
