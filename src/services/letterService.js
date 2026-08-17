@@ -47,3 +47,15 @@ export const likeLetter = async (id) => {
 
   return data.data;
 };
+
+// export const getLetterStats = async () => {
+//   const response = await fetch(`${API_URL}/stats`);
+
+//   if (!response.ok) {
+//     throw new Error("Failed to fetch letter statistics.");
+//   }
+
+//   const data = await response.json();
+
+//   return data.data.stats;
+// };

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const letterRoutes = require("./routes/letterRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/letters", letterRoutes);
+app.use("/api/v1/admin", adminRoutes);
 
 module.exports = app;

@@ -61,10 +61,65 @@ exports.likeLetter = async (req, res) => {
       status: "success",
       data: letter,
     });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({
       status: "error",
-      message: err.message,
+      message: error.message,
+    });
+  }
+};
+
+// Community statistics
+exports.getLetterStats = async (req, res) => {
+  try {
+    const stats = await Letter.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalLetters: {
+            $sum: 1,
+          },
+          totalLikes: {
+            $sum: {
+              $ifNull: ["$likes", 0],
+            },
+          },
+          countries: {
+            $addToSet: "$country",
+          },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          totalLetters: 1,
+          totalLikes: 1,
+          totalCountries: {
+            $size: "$countries",
+          },
+        },
+      },
+    ]);
+
+    const result =
+      stats.length > 0
+        ? stats[0]
+        : {
+            totalLetters: 0,
+            totalLikes: 0,
+            totalCountries: 0,
+          };
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        stats: result,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error.message,
     });
   }
 };
