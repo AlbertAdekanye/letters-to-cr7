@@ -53,13 +53,14 @@ const Hero = () => {
           }}
           className="mt-8 max-w-3xl text-lg leading-8 text-gray-300 md:text-2xl md:leading-10"
         >
-          Every generation has heroes.
+          One final season
           <br />
-          Ours wore number{" "}
-          <span className="font-semibold text-yellow-500">
-            7
+          Millions of memories
+          <br />
+          One legend forever 
+          <span className="font-semibold text-yellow-500 px-2">
+            7.
           </span>
-          .
         </motion.p>
 
         {/* Button */}

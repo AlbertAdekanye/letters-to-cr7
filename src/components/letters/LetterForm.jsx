@@ -88,7 +88,7 @@ const LetterForm = ({ onAddLetter }) => {
         </motion.div>
       )}
 
-      <div className="w-full py-20">
+      <div className="w-full py-12">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <motion.form
             onSubmit={handleSubmit}
