@@ -3,7 +3,7 @@ import stats from "../../data/legacyData";
 
 const Legacy = () => {
   return (
-    <section className="relative overflow-hidden bg-black">
+    <section className="relative overflow-hidden bg-black py-15">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
 
@@ -25,7 +25,7 @@ const Legacy = () => {
 
           <div className="mx-auto my-8 h-[2px] w-28 bg-yellow-500" />
 
-          <p className="mx-auto max-w-3xl text-lg leading-9 text-gray-400">
+          <p className="mx-auto max-w-3xl text-lg leading-9 text-gray-400 py-6">
             Behind every record is a lifetime of discipline,
             sacrifice, resilience, and an unwavering desire to
             become better every single day.

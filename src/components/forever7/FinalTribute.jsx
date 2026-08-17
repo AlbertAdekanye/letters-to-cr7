@@ -22,13 +22,13 @@ const FinalTribute = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <p className="uppercase tracking-[10px] text-yellow-500">
+          <p className="uppercase tracking-[10px] text-yellow-500 text-5xl py-6">
             Final Tribute
           </p>
 
           <div className="mx-auto my-8 h-[2px] w-24 bg-yellow-500" />
 
-          <h2 className="text-5xl font-black leading-tight text-white md:text-lg">
+          <h2 className="text-4xl font-black leading-tight text-white md:text-">
             One Dream.
             <br />
             One Legend.
@@ -47,7 +47,7 @@ const FinalTribute = () => {
             transition={{ duration: 0.9 }}
             className="space-y-8 text-left"
           >
-            <p className="text-xl leading-10 text-gray-300">
+            <p className="text-xl leading-10 text-gray-300 py-6">
               Cristiano Ronaldo's story is more than goals, trophies,
               or records.
             </p>
