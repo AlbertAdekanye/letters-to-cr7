@@ -41,3 +41,36 @@ export const checkAdmin = async (token) => {
 
   return data.data.admin;
 };
+
+export const deleteLetter = async (id) => {
+  const token = localStorage.getItem("cr7_admin_token");
+
+  if (!token) {
+    throw new Error("You are not logged in.");
+  }
+
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/letters/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  if (!response.ok) {
+    let message = "Unable to delete letter.";
+
+    try {
+      const data = await response.json();
+      message = data.message || message;
+    } catch {
+      // Response may not contain JSON
+    }
+
+    throw new Error(message);
+  }
+
+  return true;
+};

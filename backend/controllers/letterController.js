@@ -123,3 +123,23 @@ exports.getLetterStats = async (req, res) => {
     });
   }
 };
+
+exports.deleteLetter = async (req, res) => {
+  try {
+    const letter = await Letter.findByIdAndDelete(req.params.id);
+
+    if (!letter) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Letter not found.",
+      });
+    }
+
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+};
